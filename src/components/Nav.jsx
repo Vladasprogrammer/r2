@@ -1,10 +1,15 @@
 import { useContext } from 'react';
 import Link from './Link';
 import RouterContext from '../Contexts/Router';
+import AuthContext from '../contexts/Auth';
 
 export default function Nav() {
 
     const { page, Routes } = useContext(RouterContext);
+
+    const {user} = useContext(AuthContext) ?? null;
+
+    console.log('userNAV', user);
 
     const hideNav = _ => {
         if (Routes.has(page)) {
@@ -33,10 +38,24 @@ export default function Nav() {
                     <Link to="products">Products</Link>
                 </li>
             </ul>
-            <ul>
-                <li>
-                    <a href="#login">Login</a>
-                </li>
+            <ul className='right'>
+                {
+                    user !== null && user.role === 'guest'
+                    ? <li>
+                        <Link to='login'>Login</Link>
+                    </li>
+                    : null
+                }
+                {
+                    user !== null && user.role !== 'guest'
+                    ? <li>
+                        <Link to='logout'>{user.name}, Logout</Link>
+                    </li>
+                    : null
+                }
+
+                
+                
             </ul>
         </nav>
     );

@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import usePost from '../Hooks/usePost';
+import AuthContext from '../contexts/Auth';
+
+const redirectAfterLogin = 'about';
 
 export default function Login() {
 
@@ -9,7 +12,25 @@ export default function Login() {
         password: ''
     });
 
+    const { setUser } = useContext(AuthContext);
+
     const { setData, response } = usePost('login');
+
+    useEffect(_ => {
+ 
+        if (null === response) {
+            return;
+        }
+ 
+        if (response.success) {
+            setUser(response.user);
+            window.location.replace('#' + redirectAfterLogin);
+            return;
+        }
+ 
+    }, [response]);
+ 
+    
 
     const goHome = _ => {
         setForm({ username: '', password: '' });

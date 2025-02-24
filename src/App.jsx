@@ -8,20 +8,23 @@ import Products from './components/Products';
 import { Router } from './Contexts/Router';
 import Product from './components/Product';
 import Login from './components/Login';
+import { Auth } from './contexts/Auth';
 
 function App() {
 
   return (
     <Router>
-      <Nav />
-      <Main>
-        <Home />
-        <About />
-        <Contacts />
-        <Products />
-        <Product />
-        <Login />
-      </Main>
+      <Auth>
+        <Nav />
+        <Main>
+          <Home />
+          <About />
+          <Contacts />
+          <Products />
+          <Product />
+          <Login />
+        </Main>
+      </Auth>
     </Router>
   )
 }
