@@ -1,32 +1,34 @@
-import { useState } from "react";
+import { useState } from 'react';
+import usePost from '../Hooks/usePost';
 
 export default function Login() {
+
 
     const [form, setForm] = useState({
         username: '',
         password: ''
-    })
+    });
 
     const { setData, response } = usePost('login');
-    
+
     const goHome = _ => {
-
-        window.location.replace = '#';
+        setForm({ username: '', password: '' });
+        window.location.replace('#');
+        // window.location.hash = '';
+        return false;
     }
-
 
     const doLogin = _ => {
         setData({
             name: form.username,
             password: form.password
         });
-        goHome();
+
     }
 
     const doForm = e => {
         setForm(f => ({ ...f, [e.target.name]: e.target.value }));
     }
-
 
 
     return (
