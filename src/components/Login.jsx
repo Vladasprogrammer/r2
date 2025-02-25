@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import usePost from '../Hooks/usePost';
-import AuthContext from '../contexts/Auth';
+import AuthContext from '../Contexts/Auth';
 
 const redirectAfterLogin = 'about';
 
@@ -12,25 +12,35 @@ export default function Login() {
         password: ''
     });
 
-    const { setUser } = useContext(AuthContext);
-
     const { setData, response } = usePost('login');
 
+
+    const keyDown = e => {
+        if (e.key === 'Enter') {
+            doLogin();
+        }
+    };
+
+
+    const { setUser } = useContext(AuthContext);
+
+
+
     useEffect(_ => {
- 
+
         if (null === response) {
             return;
         }
- 
+        
         if (response.success) {
             setUser(response.user);
-            window.location.replace('#' + redirectAfterLogin);
+            window
+                .location
+                .replace('#' + redirectAfterLogin);
             return;
         }
- 
+
     }, [response]);
- 
-    
 
     const goHome = _ => {
         setForm({ username: '', password: '' });
@@ -44,7 +54,6 @@ export default function Login() {
             name: form.username,
             password: form.password
         });
-
     }
 
     const doForm = e => {
@@ -53,7 +62,7 @@ export default function Login() {
 
 
     return (
-        <div>
+        <div onKeyDown={keyDown}>
             <h1>Login</h1>
             <fieldset>
                 <legend>Login</legend>

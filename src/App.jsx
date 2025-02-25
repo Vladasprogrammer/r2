@@ -8,7 +8,8 @@ import Products from './components/Products';
 import { Router } from './Contexts/Router';
 import Product from './components/Product';
 import Login from './components/Login';
-import { Auth } from './contexts/Auth';
+import { Auth } from './Contexts/Auth';
+import Logout from './components/Logout';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Products />
           <Product />
           <Login />
+          <Logout />
         </Main>
       </Auth>
     </Router>

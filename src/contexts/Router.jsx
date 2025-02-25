@@ -5,12 +5,13 @@ const RouterContext = createContext();
 export const Router = ({ children }) => {
 
     const Routes = new Map([
-        ['', {c:'Home'}],
-        ['about', {c:'About'}],
-        ['contact', {c:'Contacts'}],
-        ['products', {c:'Products'}],
-        ['product', {c:'Product', p: ['id']}],
-        ['login', { c: 'Login', nav: false }]
+        ['', { c: 'Home' }],
+        ['about', { c: 'About' }],
+        ['contact', { c: 'Contacts' }],
+        ['products', { c: 'Products', auth: ['admin', 'editor'] }],
+        ['product', { c: 'Product', p: ['id'] }],
+        ['login', { c: 'Login', nav: false }],
+        ['logout', { c: 'Logout', nav: false }]
     ]);
 
     const [page, setPage] = useState(_ => {
