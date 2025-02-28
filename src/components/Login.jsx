@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import usePost from '../Hooks/usePost';
-import AuthContext from '../Contexts/Auth';
+import AuthContext from '../contexts/Auth';
 
 const redirectAfterLogin = 'about';
 

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import RouterContext from '../Contexts/Router';
+import RouterContext from '../contexts/Router';
 
 
 export default function Link({ to, children }) {

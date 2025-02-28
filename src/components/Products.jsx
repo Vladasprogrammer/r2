@@ -11,13 +11,16 @@ export default function Products() {
     const [products, setProducts] = useState(null);
 
     useEffect(_ => {
-        axios.get('http://localhost:3333/products')
+        axios.get('http://localhost:3333/products', { withCredentials: true })
             .then(response => {
                 console.log('products', response.data);
                 setProducts(response.data);
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.status);
+                if (err.response.status === 401) {
+                    window.location.hash = '#401';
+                }
             });
     }, []);
 

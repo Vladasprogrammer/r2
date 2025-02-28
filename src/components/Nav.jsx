@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import Link from './Link';
-import RouterContext from '../Contexts/Router';
+import RouterContext from '../contexts/Router';
 import AuthContext from '../contexts/Auth';
 
 export default function Nav() {

@@ -1,17 +1,19 @@
 import './app.scss';
-import Nav from './components/Nav';
-import Home from './components/Home';
-import Contacts from './components/Contacts';
 import About from './components/About';
+import Contacts from './components/Contacts';
+import Home from './components/Home';
 import Main from './components/Main';
+import Nav from './components/Nav';
 import Products from './components/Products';
-import { Router } from './Contexts/Router';
 import Product from './components/Product';
+import { Router } from './contexts/Router';
 import Login from './components/Login';
-import { Auth } from './Contexts/Auth';
+import { Auth } from './contexts/Auth';
 import Logout from './components/Logout';
+import Page401 from './components/Page401';
 
 function App() {
+
 
   return (
     <Router>
@@ -25,6 +27,7 @@ function App() {
           <Product />
           <Login />
           <Logout />
+          <Page401 />
         </Main>
       </Auth>
     </Router>
